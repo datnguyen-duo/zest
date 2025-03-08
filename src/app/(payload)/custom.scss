@@ -1,0 +1,76 @@
+@font-face {
+  font-family: 'Switzer';
+  src:
+    url('./fonts/Switzer-Variable.woff') format('woff'),
+    url('./fonts/Switzer-Variable.woff2') format('woff2'),
+    url('./fonts/Switzer-Variable.ttf') format('ttf'),
+    url('./fonts/Switzer-Variable.eot') format('eot');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-body: 'Switzer', sans-serif;
+}
+
+html {
+  font-size: 14px;
+}
+
+@layer payload-default {
+  h1 {
+    font-size: 24px;
+    line-height: 24px;
+  }
+  h2 {
+    font-size: 20px;
+    line-height: 20px;
+  }
+
+  .nav {
+    &-group {
+      margin-bottom: 20px !important;
+      &__toggle {
+        font-size: 1.5rem;
+      }
+    }
+
+    &__link {
+      &.active {
+        text-decoration: underline;
+        font-weight: initial;
+      }
+    }
+  }
+}
+
+.nav {
+  $taxonomy-items: (
+    'price-levels',
+    'cuisines',
+    'moods',
+    'destinations',
+    'meal-types',
+    'occasions',
+    'diets',
+    'difficulty-levels',
+    'travel-styles',
+    'regions',
+    'environments'
+  );
+  @each $taxonomy in $taxonomy-items {
+    #nav-#{$taxonomy} {
+      padding-left: 1.5rem;
+      position: relative;
+      &:before {
+        content: '— ';
+        display: inline-block;
+        margin-right: 0.2rem;
+        margin-bottom: 1px;
+        position: absolute;
+        left: 0;
+      }
+    }
+  }
+}

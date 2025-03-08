@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .button {
+    @apply bg-black text-white p-2 rounded hover:bg-black/80;
+  }
+
+  .overlay {
+    @apply fixed inset-0 z-50 bg-white/40 backdrop-blur-md flex items-center justify-center w-full h-full animate-fadeIn;
+  }
+}
+
+:root {
+  --color-primary: #fadd24;
+  --color-secondary: #1b1b1b;
+  --color-accent: #0d474b;
+  --color-neutral: #fff8e1;
+  --nav-height: 50px;
+}
+
+body {
+  color: var(--color-secondary);
+  /* background-color: var(--color-neutral); */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-switzer);
+}
+
+body.page-transition .loader {
+  opacity: 1;
+}
+
+body.page-transition .search-results {
+  opacity: 0;
+  pointer-events: none;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  transition:
+    opacity 0.5s,
+    background-color 0.5s;
+  padding-top: var(--nav-height);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.button {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.loader {
+  padding-bottom: var(--nav-height);
+}
+
+.grecaptcha-badge {
+  display: none !important;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes popupIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popupOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.popup-enter {
+  animation: popupIn 0.3s ease-in-out forwards;
+}
+
+.popup-exit {
+  animation: popupOut 0.3s ease-in-out forwards;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutToLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.sidebar-content {
+  transform: translateX(100%);
+}
+
+.sidebar-enter {
+  animation: slideInFromLeft 0.3s ease-in-out forwards;
+}
+
+.sidebar-exit {
+  animation: slideOutToLeft 0.3s ease-in-out forwards;
+}
